@@ -6,7 +6,7 @@ body{
 
 .content
 {
-   margin-top: 40px; 
+   margin-top: 40px;
 }
 
 .searchForm
@@ -23,7 +23,7 @@ body{
 .btn
 {
     background-color: #D86E31;
-    color: white;  
+    color: white;
 }
 
 .btn:focus,.btn:active {
@@ -43,16 +43,10 @@ body{
 
 .wikiTitle
 {
-   color: #D86E31; 
+   color: #D86E31;
 }
 
 .wikiText
 {
     color: wheat;
 }
-
-
-
-
-
-
