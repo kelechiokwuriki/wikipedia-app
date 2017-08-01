@@ -1,0 +1,116 @@
+<!Doctype html>
+<html lang="en">
+    <meta charset = "utf-8">
+    <head>
+        <title>Wikipedia Viewer</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container text-center content">
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-4">
+                    <h1>Wikipedia Viewer App</h1>
+                </div>
+                <div class="input-group col-xs-6 col-xs-offset-3 searchForm">
+                    
+                    <input type="text" class="form-control input-lg" />
+                    
+                    <span class="input-group-btn">
+                        <button id = "searchButton" class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    
+                </div>
+                <div class="col-xs-8 col-xs-offset-2 text-center">
+                    
+                    <div id="noQuery" class="randomView">
+                        <h2>C'mon don't be shy, i'll tell you what <br/>Click the Random button</h2>
+                    </div>
+                    <button class="btn btn-default random">Random</button>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3 result text-center">
+                        <ul class="wikiContent">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>      
+        </div>
+        <script>
+            $(document).ready(function()
+            {
+                $(".randomView").hide();
+                
+
+                var wikiUrl = "https://crossorigin.me/https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=5&prop=extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=";
+                
+                var link = "https://crossorigin.me/http://en.wikipedia.org/?curid=";
+                 
+                
+                $("#searchButton").click(function()
+                {
+                    var search = $('#searchText').val();
+                    
+                    //if user doesn't search for anything
+                    //add a 
+                    if(search == "")
+                    {
+                       $(".randomView").fadeIn(1000).show();
+                    }
+                    else
+                    {
+                        $(".randomView").fadeOut(1000);
+                    
+                        $("ul").empty();
+
+                        $.when($.ajax( wikiUrl + search )).then(function(wikiData)
+                        {   
+                            var wikiPage = wikiData.query.pages;
+
+                            for(var i in wikiPage)
+                            {
+                               $("ul").append('<a target="_blank" href="https://en.wikipedia.org/wiki?curlid=' + wikiPage[i].pageid + '">' + '<li><h3 class="wikiTitle">' + wikiPage[i].title + '</h3><p class="wikiText">' + wikiPage[i].extract + '</p></li></a>');  
+                            }
+                        }) 
+
+                    }
+                   
+                    
+                })
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

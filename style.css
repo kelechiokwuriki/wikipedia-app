@@ -1,0 +1,58 @@
+body{
+    background-color: #092B40;
+    color: #D86E31;
+    font-family:"Montserrat", sans-serif;
+}
+
+.content
+{
+   margin-top: 40px; 
+}
+
+.searchForm
+{
+    padding-top: 5px;
+}
+
+.form-control
+{
+    background-color: #092B40;
+    color: white;
+}
+
+.btn
+{
+    background-color: #D86E31;
+    color: white;  
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+    background-color: #D86E31;;
+}
+
+.random
+{
+    margin-top: 10px;
+}
+
+.wikiContent
+{
+    list-style: none;
+}
+
+.wikiTitle
+{
+   color: #D86E31; 
+}
+
+.wikiText
+{
+    color: wheat;
+}
+
+
+
+
+
+
